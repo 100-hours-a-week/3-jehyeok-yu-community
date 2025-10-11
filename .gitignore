@@ -4,6 +4,11 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+*application.yml
+*application.properties
+
+## Q클래스 ##
+**/generated/**/Q*.java
 
 ### STS ###
 .apt_generated
