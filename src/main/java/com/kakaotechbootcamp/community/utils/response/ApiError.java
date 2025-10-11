@@ -1,0 +1,25 @@
+package com.kakaotechbootcamp.community.utils.response;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.kakaotechbootcamp.community.utils.exception.customexception.BusinessException;
+import java.util.Map;
+import lombok.Getter;
+
+@Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ApiError {
+
+    private final String code;
+    private final String message;
+    private final Map<String, String> details;
+
+    private ApiError(String code, String message, Map<String, String> details) {
+        this.code = code;
+        this.message = message;
+        this.details = details;
+    }
+
+    public static ApiError from(BusinessException err) {
+        return new ApiError(err.getMessage(), err.getErrorCode().getDefaultMessage(), null);
+    }
+}
