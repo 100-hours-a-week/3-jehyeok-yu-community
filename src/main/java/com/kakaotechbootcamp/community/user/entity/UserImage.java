@@ -1,6 +1,7 @@
 package com.kakaotechbootcamp.community.user.entity;
 
 import com.kakaotechbootcamp.community.image.entity.Image;
+import com.kakaotechbootcamp.community.utils.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "user_image")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserImage {
+public class UserImage extends BaseEntity {
 
     @Id
     public Long userId;

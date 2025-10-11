@@ -1,5 +1,6 @@
 package com.kakaotechbootcamp.community.image.entity;
 
+import com.kakaotechbootcamp.community.utils.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "images")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Image {
+public class Image extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
