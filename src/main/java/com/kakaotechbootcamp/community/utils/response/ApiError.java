@@ -20,6 +20,7 @@ public class ApiError {
     }
 
     public static ApiError from(BusinessException err) {
-        return new ApiError(err.getMessage(), err.getErrorCode().getDefaultMessage(), null);
+        return new ApiError(err.getErrorCode().getCode(), err.getErrorCode().getDefaultMessage(),
+            null);
     }
 }
