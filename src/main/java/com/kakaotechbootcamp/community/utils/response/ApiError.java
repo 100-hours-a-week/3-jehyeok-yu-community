@@ -1,6 +1,7 @@
 package com.kakaotechbootcamp.community.utils.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.kakaotechbootcamp.community.utils.exception.ErrorCode;
 import com.kakaotechbootcamp.community.utils.exception.customexception.BusinessException;
 import java.util.Map;
 import lombok.Getter;
@@ -21,6 +22,11 @@ public class ApiError {
 
     public static ApiError from(BusinessException err) {
         return new ApiError(err.getErrorCode().getCode(), err.getErrorCode().getDefaultMessage(),
+            null);
+    }
+
+    public static ApiError from(ErrorCode errCode) {
+        return new ApiError(errCode.getCode(), errCode.getDefaultMessage(),
             null);
     }
 }
