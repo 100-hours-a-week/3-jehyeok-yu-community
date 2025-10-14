@@ -7,6 +7,7 @@ import com.kakaotechbootcamp.community.user.exception.DuplicateException;
 import com.kakaotechbootcamp.community.user.exception.UserErrorCode;
 import com.kakaotechbootcamp.community.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,11 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder encoder;
 
     public SignUpResponseDto createUser(SignUpRequestDto dto) {
         checkDuplicateAtUserEmail(dto.getEmail());
         checkDuplicateAtUserNickname(dto.getNickname());
-        User user = User.create(dto.getEmail(), dto.getNickname(), dto.getPassword());
+        User user = User.create(dto.getEmail(), dto.getNickname(),
+            encoder.encode(dto.getPassword()));
         userRepository.save(user);
         return new SignUpResponseDto(user.getUserId());
     }

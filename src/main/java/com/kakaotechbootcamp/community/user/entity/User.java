@@ -32,6 +32,7 @@ public class User extends BaseEntity {
     private String nickname;
 
     @Column(nullable = false, length = 60)
+    @Length(min = 60, max = 60, message = "저장과정에 서버 에러가 발생했습니다.")
     private String password;
 
 
