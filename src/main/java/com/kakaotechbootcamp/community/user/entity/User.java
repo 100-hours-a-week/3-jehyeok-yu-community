@@ -33,8 +33,8 @@ public class User extends BaseEntity {
 
     @Column(nullable = false, length = 60)
     @Length(min = 60, max = 60, message = "저장과정에 서버 에러가 발생했습니다.")
+    @Getter
     private String password;
-
 
     // 팩토리 메서드
     private User(String email, String nickname, String password) {
