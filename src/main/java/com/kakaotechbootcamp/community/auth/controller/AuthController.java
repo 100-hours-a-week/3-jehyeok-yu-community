@@ -29,12 +29,12 @@ public class AuthController {
     }
 
     @PutMapping
-    public ResponseEntity<ApiResponse<Void>> refresh(@RequestBody LoginRequestDto requestDto) {
+    public ResponseEntity<ApiResponse<Void>> refresh() {
         throw new NotImplementException();
     }
 
     @DeleteMapping
-    public ResponseEntity<ApiResponse<Void>> logout(@RequestBody LoginRequestDto requestDto) {
+    public ResponseEntity<ApiResponse<Void>> logout() {
         throw new NotImplementException();
     }
 }

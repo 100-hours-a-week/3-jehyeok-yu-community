@@ -64,7 +64,6 @@ public class AuthService {
             .maxAge(Duration.ofMillis(refreshTtlMillis))
             .build();
 
-        System.out.println("refresh token : " + refreshToken);
         httpResponse.addHeader("Authorization", "Bearer " + accessToken);
         httpResponse.addHeader(HttpHeaders.SET_COOKIE, refreshCookie.toString());
 
