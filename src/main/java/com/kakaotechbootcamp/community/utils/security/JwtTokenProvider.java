@@ -2,6 +2,7 @@ package com.kakaotechbootcamp.community.utils.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -68,6 +69,10 @@ public class JwtTokenProvider {
     }
 
     public Long userId(String token) {
-        return Long.valueOf(parse(token).getBody().getSubject());
+        String sub = parse(token).getBody().getSubject();
+        if (sub == null || !sub.chars().allMatch(Character::isDigit)) {
+            throw new JwtException("invalid sub");
+        }
+        return Long.valueOf(sub);
     }
 }
