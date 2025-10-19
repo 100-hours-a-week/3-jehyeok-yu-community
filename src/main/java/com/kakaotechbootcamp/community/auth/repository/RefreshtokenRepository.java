@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RefreshtokenRepository extends JpaRepository<Refreshtoken, Long> {
 
     Optional<Refreshtoken> findByUser(User user);
+
+    Optional<Refreshtoken> findByUser_UserId(long userId);
 }

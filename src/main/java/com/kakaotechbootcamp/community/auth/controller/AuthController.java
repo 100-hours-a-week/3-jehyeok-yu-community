@@ -4,9 +4,11 @@ import com.kakaotechbootcamp.community.auth.dto.request.LoginRequestDto;
 import com.kakaotechbootcamp.community.auth.service.AuthService;
 import com.kakaotechbootcamp.community.utils.exception.customexception.NotImplementException;
 import com.kakaotechbootcamp.community.utils.response.ApiResponse;
+import com.kakaotechbootcamp.community.utils.security.AuthPrincipal;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -34,7 +36,9 @@ public class AuthController {
     }
 
     @DeleteMapping
-    public ResponseEntity<ApiResponse<Void>> logout() {
-        throw new NotImplementException();
+    public ResponseEntity<ApiResponse<Void>> logout(
+        @AuthenticationPrincipal AuthPrincipal authPrincipal) {
+        authService.logout(authPrincipal.getUserId());
+        return ResponseEntity.ok(ApiResponse.ok(null));
     }
 }

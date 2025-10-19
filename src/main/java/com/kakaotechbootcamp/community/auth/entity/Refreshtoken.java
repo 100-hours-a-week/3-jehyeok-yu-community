@@ -58,6 +58,7 @@ public class Refreshtoken {
 
     // 즉시 무효화
     public void revokeNow() {
+        this.refreshHash = null;
         this.expiresAt = null;
     }
 
