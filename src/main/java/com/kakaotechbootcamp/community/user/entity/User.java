@@ -29,6 +29,7 @@ public class User extends BaseEntity {
 
     @Length(min = 2, max = 10)
     @Column(unique = true, nullable = false, length = 10)
+    @Getter
     private String nickname;
 
     @Column(nullable = false, length = 60)
